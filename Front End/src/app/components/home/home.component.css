@@ -1,0 +1,26 @@
+.rg{
+    color: white;
+    font-size: large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* #sect1 {  
+    height: 650 px;  
+    color: #fff;background - image: url("../../assets/images/back2.jpg");  
+    background - size: 100 % ;  
+    background - size: cover;  
+}    */
+
+
+#sect1 {
+    height: 100vh ;
+    width: 100vw;
+    color: #fff;
+    background-image: url(./survey-testing.webp);
+    background-size: cover;
+}
+
+#yyy{
+    font-size: 35px;
+    color: red;
+}
