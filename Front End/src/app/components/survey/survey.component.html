@@ -1,0 +1,98 @@
+<!-- <nav class="navbar navbar-dark bg-dark navbar-fixed-top">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active rg" aria-current="page" routerLink="/home">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link rg" routerLink="/login">Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link rg" routerLink="/signup">Register</a>
+    </li>
+  </ul>
+</nav> -->
+
+
+
+<section class="vh-100">
+  <div class="right"><button class="btn btn-primary mybutton" (click)="logOut()">Logout</button></div>
+	<div class="container-fluid h-custom">
+	  <div class="row d-flex justify-content-center align-items-center h-100">
+		<div class="col-md-9 col-lg-6 col-xl-5">
+		  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+			class="img-fluid" alt="Sample image">
+		</div>
+		<div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+      <h2>Employee Survey of Offsite Event</h2>
+
+<div>
+  <p class="text-center fs-3" [ngClass]="isSurveySubmitted  ?'text-success pb-1' : 'text-danger pb-1'">{{displayMsg}}</p>
+</div>
+<form [formGroup] = "surveyForm" (ngSubmit)="surveySubmit()" class="border p-3 rounded-3">
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form6Example3">Employee ID</label>
+    <input type="text" id="Emp_id" class="form-control" formControlName ="Emp_id"/>
+    <div class="form-text text-danger" *ngIf="EmpId.errors?.['required'] && (EmpId.touched || EmpId.dirty)">
+      Employee ID is Required.
+</div>
+
+<div class="form-text text-danger" *ngIf="EmpId.errors?.['minlength'] || EmpId.errors?.['maxlength']  && (EmpId.touched || EmpId.dirty)">
+  Employee ID is Invalid.
+</div>
+    
+  </div>
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form6Example5">Email</label>
+    <input type="email" id="email" class="form-control" formControlName = "email" />
+
+    <div class="form-text text-danger" *ngIf="Email.errors?.['required'] && (Email.touched || Email.dirty)">
+      Email is Required.
+  </div>
+  <div class="form-text text-danger" *ngIf="Email.errors?.['email'] && (Email.touched || Email.dirty)">
+     Email is Invalid.
+ </div>
+   
+  </div>
+
+  <label class="form-label" for="form6Example3">Attending the event?</label>
+  <div class="input-group mb-4">
+    <select class="form-select form-control" id="attending" formControlName = "attending">
+      <option selected value="0">Attending the event ?</option>
+      <option value="1">Yes</option>
+      <option value="2">No</option>
+      
+    </select>
+    <!-- <label class="input-group-text" for="inputGroupSelect02">Options</label> -->
+  </div>
+
+   <label class="form-label" for="form6Example3">Choose your Pickup Location</label>
+  <div class="input-group mb-4">
+    <select class="form-select form-control" id="pickuploc" formControlName = "pickuploc">
+      <option selected value="0">choose pickup location</option>
+      <option value="1">MARATHALLI</option>
+      <option value="2">SILK BOARD</option>
+      <option value="3">BANASHANKHARI</option>
+    </select>
+    <!-- <label class="input-group-text" for="inputGroupSelect02">Options</label> -->
+  </div>
+
+  <label class="form-label" for="form6Example3">Choose your Pickup Time</label>
+  <div class="input-group mb-4">
+    <select class="form-select form-control" id="pickuptime" formControlName = "pickuptime">
+      <option selected value="0">Enter pickup time</option>
+      <option value="1">7-AM</option>
+      <option value="2">8-AM</option>
+      <option value="3">9-AM</option>
+    </select>
+    <!-- <label class="input-group-text" for="inputGroupSelect02">Options</label> -->
+  </div>
+  
+    <!-- Submit button -->
+    <button type="submit" [disabled]="surveyForm.invalid" class="btn btn-primary btn-block mb-4">Submit</button>
+  </form>
+</div>
+</div>
+</div>
+
+</section>
+    
