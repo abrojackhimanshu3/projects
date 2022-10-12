@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Register.Models;
@@ -23,6 +24,7 @@ namespace Register.Controllers
         }
 
 
+        [AllowAnonymous]
 
         [HttpPost("CreateUser")]
         public IActionResult Create(User user)
@@ -37,6 +39,8 @@ namespace Register.Controllers
             return Ok("Success");
         }
 
+        [AllowAnonymous]
+
         [HttpPost("LoginUser")]
 
         public IActionResult Login(Login user)
@@ -45,10 +49,33 @@ namespace Register.Controllers
 
             if (userAvailable != null)
             {
-                return Ok("Success");
+                return Ok(new JwtService(_config).GenerateToken(
+                    
+                    userAvailable.UserId.ToString(),
+                    userAvailable.FirstName,
+                    userAvailable.LastName,
+                    userAvailable.Email
+                    )
+                  );
             }
 
             return Ok("Failure");
         }
+
+        [AllowAnonymous]
+        [HttpPost("surveysubmit")]
+
+        public IActionResult survey_submit(survey sur)
+        {
+            if (_context.SurveyData.Where(s => s.Emp_id == sur.Emp_id).FirstOrDefault() != null)
+            {
+                return Ok("Already submitted");
+            }
+            _context.SurveyData.Add(sur);
+            _context.SaveChanges();
+            return Ok("Sucessfully submitted");
+        }
     }
+
+
 }

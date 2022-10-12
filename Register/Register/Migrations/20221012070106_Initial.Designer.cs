@@ -12,7 +12,7 @@ using Register.Models;
 namespace Register.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20221009141428_Initial")]
+    [Migration("20221012070106_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,29 @@ namespace Register.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("Register.Models.survey", b =>
+                {
+                    b.Property<string>("Emp_id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Attending")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PickupLocation")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PickupTime")
+                        .HasColumnType("int");
+
+                    b.HasKey("Emp_id");
+
+                    b.ToTable("SurveyData");
+                });
 
             modelBuilder.Entity("Register.Models.User", b =>
                 {

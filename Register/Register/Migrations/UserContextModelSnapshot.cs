@@ -22,6 +22,29 @@ namespace Register.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("Register.Models.survey", b =>
+                {
+                    b.Property<string>("Emp_id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Attending")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PickupLocation")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PickupTime")
+                        .HasColumnType("int");
+
+                    b.HasKey("Emp_id");
+
+                    b.ToTable("SurveyData");
+                });
+
             modelBuilder.Entity("Register.Models.User", b =>
                 {
                     b.Property<int>("UserId")
