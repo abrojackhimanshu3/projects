@@ -1,0 +1,54 @@
+.table{
+
+width:1200px;
+
+
+
+    height: fit-content;
+
+   position:relative;
+
+
+
+    left: 145px;
+
+
+
+    bottom: -100px;
+
+
+
+    font-size: larger;
+
+
+
+ 
+
+
+
+    border-radius: 5px;
+
+
+
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+
+
+
+
+
+
+}
+
+.mybutton
+{
+  position: relative;
+  nav-up: 0;
+  nav-right: 0;
+}
+
+.right
+{
+    float: right;
+    margin-right: 5px;
+}

@@ -1,0 +1,55 @@
+<div>
+    <div class="right"><button class="btn btn-primary mybutton" (click)="logOut()">Logout</button></div>
+</div>
+
+<table class="table">
+
+<thead >
+
+ <tr class="active-row">
+
+ <th scope="col">Employee_Id</th>
+
+<th scope="col">Email</th>
+
+<th scope="col">Attending</th>
+
+ <th scope="col">Pickup Location</th>
+
+<th scope="col">Pickup Time</th>
+
+
+</tr>
+
+</thead>
+
+ <tbody>
+
+<tr *ngFor="let r of surveydata">
+
+ <td scope="row">{{r.emp_id}}</td>
+ <td>{{r.email}}</td>
+ <td [ngSwitch]="r.attending">
+    <span *ngSwitchCase="1">Yes</span>
+    <span *ngSwitchCase="2">No</span>
+    <span *ngSwitchDefault>...</span>
+ </td>
+ <td [ngSwitch]="r.pickupLocation">
+    <span *ngSwitchCase="1">MARATHALLI</span>
+    <span *ngSwitchCase="2">SILK BOARD</span>
+    <span *ngSwitchCase="3">BANASHANKHARI</span>
+    <span *ngSwitchDefault>...</span>
+ </td>
+
+ <td [ngSwitch]="r.pickupTime">
+    <span *ngSwitchCase="1">7-AM</span>
+    <span *ngSwitchCase="2">8-AM</span>
+    <span *ngSwitchCase="3">9-AM</span>
+    <span *ngSwitchDefault>...</span>
+ </td>
+ 
+ </tr> 
+</tbody>
+</table>
+
+
